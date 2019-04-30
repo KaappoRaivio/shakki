@@ -1,2 +1,0 @@
-class NotImplementedError(Exception):
-    pass
