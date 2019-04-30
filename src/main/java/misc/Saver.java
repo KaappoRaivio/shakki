@@ -1,7 +1,5 @@
 package misc;
 
-import blokus.Board;
-
 import java.io.*;
 
 public class Saver<T extends Serializable> implements Serializable {

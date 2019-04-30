@@ -1,4 +1,4 @@
-package blokus;
+package misc;
 
 import java.io.Serializable;
 
