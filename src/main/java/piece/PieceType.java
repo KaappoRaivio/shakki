@@ -1,6 +1,7 @@
 package piece;
 
 import piece.piecefitters.BlackPawnFitter;
+import piece.piecefitters.WhiteBishopFitter;
 import piece.piecefitters.WhitePawnFitter;
 
 import java.util.Arrays;
@@ -9,7 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public enum PieceType {
-    WHITE_PAWN ("p", Color.WHITE, new WhitePawnFitter()), WHITE_KNIGHT ("n", Color.WHITE), WHITE_BISHOP ("b", Color.WHITE),
+    WHITE_PAWN ("p", Color.WHITE, new WhitePawnFitter()), WHITE_KNIGHT ("n", Color.WHITE), WHITE_BISHOP ("b", Color.WHITE, new WhiteBishopFitter()),
     WHITE_ROOK ("r", Color.WHITE), WHITE_QUEEN ("q", Color.WHITE), WHITE_KING ("k", Color.WHITE),
 
     BLACK_PAWN ("P", Color.BLACK, new BlackPawnFitter()), BLACK_KNIGHT ("N", Color.BLACK), BLACK_BISHOP ("B", Color.BLACK),
@@ -24,7 +25,7 @@ public enum PieceType {
     }
 
     private String representation;
-    private Piece fitter;
+    private PieceFitter fitter;
     private Color pieceColor;
 
     public Color getPieceColor() {
@@ -32,7 +33,7 @@ public enum PieceType {
     }
 
 
-    public Piece getFitter() {
+    public PieceFitter getFitter() {
         return fitter;
     }
 
@@ -40,7 +41,7 @@ public enum PieceType {
         this(representation, pieceColor, null);
     }
 
-    PieceType (String representation, Color pieceColor, Piece fitter) {
+    PieceType (String representation, Color pieceColor, PieceFitter fitter) {
         this.representation = representation;
         this.pieceColor = pieceColor;
         this.fitter = fitter;

@@ -3,12 +3,10 @@ package piece.piecefitters;
 import board.ChessBoard;
 import misc.Position;
 import piece.Color;
-import piece.Piece;
+import piece.PieceFitter;
 import piece.PieceType;
 
-import java.util.List;
-
-public class WhitePawnFitter implements Piece {
+public class WhitePawnFitter implements PieceFitter {
 
     @Override
     public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard, Color turn) {

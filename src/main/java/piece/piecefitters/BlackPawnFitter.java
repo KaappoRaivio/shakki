@@ -3,10 +3,10 @@ package piece.piecefitters;
 import board.ChessBoard;
 import misc.Position;
 import piece.Color;
-import piece.Piece;
+import piece.PieceFitter;
 import piece.PieceType;
 
-public class BlackPawnFitter implements Piece {
+public class BlackPawnFitter implements PieceFitter {
     @Override
     public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard, Color turn) {
         if (currentBoard.getSquare(oldPosition).getPieceColor() != Color.BLACK || turn != Color.BLACK) {

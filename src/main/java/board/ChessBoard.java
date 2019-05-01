@@ -1,6 +1,7 @@
 package board;
 
 import misc.Position;
+import piece.Color;
 import piece.PieceType;
 
 import java.io.*;
@@ -55,9 +56,9 @@ public class ChessBoard implements Serializable {
         }
     }
 
-    public boolean isMoveLegal (Position oldPosition, Position newPosition) {
+    public boolean isMoveLegal (Position oldPosition, Position newPosition, Color turn) {
         System.out.println(getSquare(oldPosition));
-        return getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this);
+        return getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this, turn);
     }
 
     @Override
@@ -77,7 +78,7 @@ public class ChessBoard implements Serializable {
 
     public static void main(String[] args) {
         var board = new ChessBoard();
-        System.out.println(board.isMoveLegal(new Position(0, 6), new Position(0, 4)));
+        System.out.println(board.isMoveLegal(new Position(2, 0), new Position(4, 2), Color.WHITE));
         System.out.println(board);
     }
 }
