@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Optional;
 
 public enum PieceType {
-    WHITE_PAWN ("p", new WhitePawnFitter()), WHITE_KNIGHT ("n"), WHITE_BISHOP ("b"),
-    WHITE_ROOK ("r"), WHITE_QUEEN ("q"), WHITE_KING ("k"),
+    WHITE_PAWN ("p", Color.WHITE, new WhitePawnFitter()), WHITE_KNIGHT ("n", Color.WHITE), WHITE_BISHOP ("b", Color.WHITE),
+    WHITE_ROOK ("r", Color.WHITE), WHITE_QUEEN ("q", Color.WHITE), WHITE_KING ("k", Color.WHITE),
 
-    BLACK_PAWN ("P", new BlackPawnFitter()), BLACK_KNIGHT ("N"), BLACK_BISHOP ("B"),
-    BLACK_ROOK ("R"), BLACK_QUEEN ("Q"), BLACK_KING ("K"),
+    BLACK_PAWN ("P", Color.BLACK, new BlackPawnFitter()), BLACK_KNIGHT ("N", Color.BLACK), BLACK_BISHOP ("B", Color.BLACK),
+    BLACK_ROOK ("R", Color.BLACK), BLACK_QUEEN ("Q", Color.BLACK), BLACK_KING ("K", Color.BLACK),
 
-    NO_PIECE (".");
+    NO_PIECE (".", Color.NO_COLOR);
 
     private static Map<String, PieceType> values = new HashMap<>();
 
@@ -24,19 +24,25 @@ public enum PieceType {
     }
 
     private String representation;
+    private Piece fitter;
+    private Color pieceColor;
+
+    public Color getPieceColor() {
+        return pieceColor;
+    }
+
 
     public Piece getFitter() {
         return fitter;
     }
 
-    private Piece fitter;
-
-    PieceType(String representation) {
-        this(representation, null);
+    PieceType (String representation, Color pieceColor) {
+        this(representation, pieceColor, null);
     }
 
-    PieceType(String representation, Piece fitter) {
+    PieceType (String representation, Color pieceColor, Piece fitter) {
         this.representation = representation;
+        this.pieceColor = pieceColor;
         this.fitter = fitter;
     }
 

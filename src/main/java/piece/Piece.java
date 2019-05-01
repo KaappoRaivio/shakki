@@ -4,5 +4,5 @@ import board.ChessBoard;
 import misc.Position;
 
 public interface Piece {
-    boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard);
+    boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard, Color turn);
 }

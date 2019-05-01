@@ -2,6 +2,7 @@ package piece.piecefitters;
 
 import board.ChessBoard;
 import misc.Position;
+import piece.Color;
 import piece.Piece;
 import piece.PieceType;
 
@@ -10,7 +11,11 @@ import java.util.List;
 public class WhitePawnFitter implements Piece {
 
     @Override
-    public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard) {
+    public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard, Color turn) {
+        if (currentBoard.getSquare(oldPosition).getPieceColor() != Color.WHITE || turn != Color.WHITE) {
+            return false;
+        }
+
         boolean isDoubleMove = false;
         if (newPosition.getY() - oldPosition.getY() == 2) {
             isDoubleMove = true;
