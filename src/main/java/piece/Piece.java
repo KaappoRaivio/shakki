@@ -1,11 +1,8 @@
 package piece;
 
-import misc.Pair;
+import board.ChessBoard;
 import misc.Position;
 
-abstract public class Piece {
-    PieceType pieceType;
-    boolean onBoard;
-
-    Pair<Boolean, Position> stateOnBoard;
+public interface Piece {
+    boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard);
 }

@@ -3,8 +3,9 @@ package misc;
 import java.io.Serializable;
 
 public class Position implements Serializable {
-    public final int x;
-    public final int y;
+    private final int x;
+
+    private final int y;
 
     public Position(int x, int y) {
         this.x = x;
@@ -17,9 +18,17 @@ public class Position implements Serializable {
 
     @Override
     public String toString() {
-        return "blokus.Position(" +
+        return "Position(" +
                 "x=" + x +
                 ", y=" + y +
                 ')';
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
