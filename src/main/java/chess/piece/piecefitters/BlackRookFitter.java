@@ -6,10 +6,12 @@ import chess.piece.Color;
 import chess.piece.PieceFitter;
 import chess.piece.PieceType;
 
+import java.lang.reflect.Array;
+
 public class BlackRookFitter implements PieceFitter {
     @Override
     public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard) {
-        boolean rightTurn = currentBoard.getSquare(oldPosition).getPieceColor() == Color.WHITE;
+        boolean rightTurn = currentBoard.getSquare(oldPosition).getPieceColor() == Color.BLACK;
         boolean correctFile =  oldPosition.getX() == newPosition.getX()
                 || oldPosition.getY() == newPosition.getY();
 
@@ -27,8 +29,11 @@ public class BlackRookFitter implements PieceFitter {
         if (oldPosition.equals(newPosition) && recursive) {
             return true;
         }
-
-        if (currentBoard.getSquare(newPosition) != PieceType.NO_PIECE) {
+        try {
+            if (currentBoard.getSquare(newPosition) != PieceType.NO_PIECE) {
+                return false;
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
             return false;
         }
 

@@ -22,7 +22,7 @@ public enum PieceType {
     BLACK_QUEEN ("Q", Color.BLACK, new BlackQueenFitter()),
     BLACK_KING ("K", Color.BLACK, new BlackKingFitter()),
 
-    NO_PIECE (".", Color.NO_COLOR, (oldPosition, newPosition, currentBoard, turn) -> false);
+    NO_PIECE (".", Color.NO_COLOR, (oldPosition, newPosition, currentBoard) -> false);
 
     private static Map<String, PieceType> values = new HashMap<>();
 

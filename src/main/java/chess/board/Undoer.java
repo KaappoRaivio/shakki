@@ -1,11 +1,12 @@
 package chess.board;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-public class Undoer<T> {
+public class Undoer<T> implements Serializable {
     private Stack<T> states = new Stack<>();
 
     public void addState (T state) {

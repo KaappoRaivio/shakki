@@ -4,7 +4,10 @@ import chess.piece.Color;
 import chess.piece.PieceType;
 import misc.Position;
 
-class KingChecker {
+import java.io.Serializable;
+import java.lang.reflect.Array;
+
+class KingChecker implements Serializable {
     private ChessBoard board;
 
     KingChecker (ChessBoard board) {
@@ -33,6 +36,8 @@ class KingChecker {
             queenType = PieceType.WHITE_QUEEN;
             kingType = PieceType.WHITE_KING;
         }
+//        System.out.println(findNextPiece(kingPos, 0, 1, 5));
+
         boolean rookSafety
                 = findNextPiece(kingPos, 1, 0, 8) != rookType
                 && findNextPiece(kingPos, -1, 0, 8) != rookType
@@ -75,7 +80,7 @@ class KingChecker {
                 && findNextPiece(kingPos, 0, -1, 1) != kingType
                 && findNextPiece(kingPos, 1, -1, 1) != kingType;
 
-        return rookSafety && bishopSafety && knightSafety && kingSafety;
+        return !(rookSafety && bishopSafety && knightSafety && kingSafety);
 
     }
 
@@ -89,7 +94,13 @@ class KingChecker {
             return board.getSquare(newPosition);
         }
 
-        var square = board.getSquare(newPosition);
+        PieceType square;
+
+        try {
+            square = board.getSquare(newPosition);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return PieceType.NO_PIECE;
+        }
 
         if (square != PieceType.NO_PIECE) {
             return square;

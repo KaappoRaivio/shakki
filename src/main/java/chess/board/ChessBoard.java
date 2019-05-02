@@ -41,7 +41,7 @@ public class ChessBoard implements Serializable {
 
     private void resetBoard (String path) {
         board = new PieceType[8][8];
-
+        
         String rawText;
         try {
             rawText = new String(new FileInputStream(new File(path)).readAllBytes(), StandardCharsets.UTF_8);
@@ -52,7 +52,7 @@ public class ChessBoard implements Serializable {
         var lines = rawText.split("\n");
 
         if (lines.length != 8) {
-            throw new RuntimeException("Invalid chess.board format!");
+            throw new RuntimeException("Invalid board format!");
         }
 
         for (int y = 0; y < board.length; y++) {
@@ -65,6 +65,10 @@ public class ChessBoard implements Serializable {
     }
 
     public boolean isMoveLegal (Position oldPosition, Position newPosition, Color turn) {
+        if (oldPosition.equals(new Position(3, 5)) && newPosition.equals(new Position(4, 4))) {
+            System.out.println("Debugger!");
+        }
+
         if (getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this) && turn == getSquare(oldPosition).getPieceColor()) {
             makeDummyMove(oldPosition, newPosition);
             boolean check = kingChecker.isKingInCheck(turn);
@@ -163,8 +167,13 @@ public class ChessBoard implements Serializable {
     public static void main(String[] args) {
         var board = new ChessBoard("/home/kaappo/git/shakki/src/main/resources/boards/board1.dat");
 //        System.out.println(board.isMoveLegal(new Position(2, 0), new Position(4, 2), Color.WHITE));
-        System.out.println(board.getAllFittingMoves(Color.WHITE));
+        System.out.println(board.getAllFittingMoves(Color.BLACK));
         System.out.println(board);
-        System.out.println(board.isMoveLegal(new Position(1, 0), new Position(0, 2), Color.WHITE));
+        if (board.kingChecker.isKingInCheck(Color.BLACK)) {
+            System.out.println("King is in check!");
+        } else {
+            System.out.println("king is not int check!");
+        }
+//        System.out.println(board.isMoveLegal(new Position(3, 5), new Position(3, 4), Color.BLACK));
     }
 }
