@@ -8,13 +8,21 @@ import java.util.Map;
 import java.util.Optional;
 
 public enum PieceType {
-    WHITE_PAWN ("p", Color.WHITE, new WhitePawnFitter()), WHITE_KNIGHT ("n", Color.WHITE), WHITE_BISHOP ("b", Color.WHITE, new WhiteBishopFitter()),
-    WHITE_ROOK ("r", Color.WHITE, new WhiteRookFitter()), WHITE_QUEEN ("q", Color.WHITE), WHITE_KING ("k", Color.WHITE),
+    WHITE_PAWN ("p", Color.WHITE, new WhitePawnFitter()),
+    WHITE_KNIGHT ("n", Color.WHITE, new WhiteKnightFitter()),
+    WHITE_BISHOP ("b", Color.WHITE, new WhiteBishopFitter()),
+    WHITE_ROOK ("r", Color.WHITE, new WhiteRookFitter()),
+    WHITE_QUEEN ("q", Color.WHITE, new WhiteQueenFitter()),
+    WHITE_KING ("k", Color.WHITE, new WhiteKingFitter()),
 
-    BLACK_PAWN ("P", Color.BLACK, new BlackPawnFitter()), BLACK_KNIGHT ("N", Color.BLACK), BLACK_BISHOP ("B", Color.BLACK, new BlackBishopFitter()),
-    BLACK_ROOK ("R", Color.BLACK, new BlackRookFitter()), BLACK_QUEEN ("Q", Color.BLACK), BLACK_KING ("K", Color.BLACK),
+    BLACK_PAWN ("P", Color.BLACK, new BlackPawnFitter()),
+    BLACK_KNIGHT ("N", Color.BLACK, new BlackKnightFitter()),
+    BLACK_BISHOP ("B", Color.BLACK, new BlackBishopFitter()),
+    BLACK_ROOK ("R", Color.BLACK, new BlackRookFitter()),
+    BLACK_QUEEN ("Q", Color.BLACK, new BlackQueenFitter()),
+    BLACK_KING ("K", Color.BLACK, new BlackKingFitter()),
 
-    NO_PIECE (".", Color.NO_COLOR);
+    NO_PIECE (".", Color.NO_COLOR, (oldPosition, newPosition, currentBoard, turn) -> false);
 
     private static Map<String, PieceType> values = new HashMap<>();
 
@@ -33,10 +41,6 @@ public enum PieceType {
 
     public PieceFitter getFitter() {
         return fitter;
-    }
-
-    PieceType (String representation, Color pieceColor) {
-        this(representation, pieceColor, null);
     }
 
     PieceType (String representation, Color pieceColor, PieceFitter fitter) {
