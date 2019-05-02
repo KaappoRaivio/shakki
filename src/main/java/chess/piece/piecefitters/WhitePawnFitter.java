@@ -10,8 +10,8 @@ import chess.piece.PieceType;
 public class WhitePawnFitter implements PieceFitter {
 
     @Override
-    public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard, Color turn) {
-        if (currentBoard.getSquare(oldPosition).getPieceColor() != Color.WHITE || turn != Color.WHITE) {
+    public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard) {
+        if (currentBoard.getSquare(oldPosition).getPieceColor() != Color.WHITE) {
             return false;
         }
 

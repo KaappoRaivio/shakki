@@ -1,19 +1,27 @@
 package chess.board;
 
+import chess.move.Move;
 import misc.Position;
 import chess.piece.Color;
 import chess.piece.PieceType;
+import misc.Saver;
 
 import java.io.*;
 
 import java.nio.charset.StandardCharsets;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class ChessBoard implements Serializable {
-    private boolean hasWhiteKingMoved;
-    private boolean hasBlackKingMoved;
+    private Saver<ChessBoard> saver = new Saver<>();
+    private Undoer<PieceType[][]> undoer = new Undoer<>();
+    private KingChecker kingChecker = new KingChecker(this);
 
-    private PieceType[][] board;
+    private boolean hasWhiteKingMoved = false;
+    private boolean hasBlackKingMoved = false;
+
+    PieceType[][] board;
 
     public ChessBoard(String path) {
         resetBoard(path);
@@ -57,9 +65,21 @@ public class ChessBoard implements Serializable {
     }
 
     public boolean isMoveLegal (Position oldPosition, Position newPosition, Color turn) {
-        System.out.println(getSquare(oldPosition));
-        return getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this, turn);
+        if (getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this) && turn == getSquare(oldPosition).getPieceColor()) {
+            makeDummyMove(oldPosition, newPosition);
+            boolean check = kingChecker.isKingInCheck(turn);
+            undo();
+            return !check;
+        } else {
+            return false;
+        }
     }
+
+    public boolean isMoveLegal (Move move) {
+        return isMoveLegal(move.getBasePosition(), move.getTargetPosition(), move.getTurn());
+    }
+
+
 
     @Override
     public String toString() {
@@ -76,10 +96,75 @@ public class ChessBoard implements Serializable {
         return builder.toString();
     }
 
+    public List<Move> getAllFittingMoves (Color color) {
+        var moves = new LinkedList<Move>();
+
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                moves.addAll(getAllFittingMoves(new Position(x, y), color));
+            }
+        }
+
+        return moves;
+    }
+
+    private List<Move> getAllFittingMoves (Position oldPosition, Color color) {
+        var moves = new LinkedList<Move>();
+
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                if (isMoveLegal(oldPosition, new Position(x, y), color)) {
+                    moves.add(new Move(oldPosition, new Position(x, y), deepCopy(), color));
+                }
+            }
+        }
+
+        return moves;
+    }
+
+    public void makeMove (Move move) {
+        makeMove(move.getBasePosition(), move.getTargetPosition(), move.getTurn());
+    }
+
+    private void makeMove (Position oldPosition, Position newPosition, Color turn) {
+        if (isMoveLegal(oldPosition, newPosition, turn)) {
+
+            makeDummyMove(oldPosition, newPosition);
+        } else {
+            throw new RuntimeException("Move" + new Move(oldPosition, newPosition, this, turn) + " is not legal!");
+        }
+    }
+
+    private void makeDummyMove (Position oldPosition, Position newPosition) {
+        saveState();
+        var piece = getSquare(oldPosition);
+        setSquare(oldPosition, PieceType.NO_PIECE);
+        setSquare(newPosition, piece);
+    }
+
+    public ChessBoard deepCopy () {
+        return saver.deepCopy(this);
+    }
+
+    public void undo () {
+        board = undoer.undo();
+    }
+
+    private void saveState () {
+        PieceType[][] oldBoard = new PieceType[8][8];
+
+        for (int y = 0; y < 8; y++) {
+            System.arraycopy(board[y], 0, oldBoard[y], 0, 8);
+        }
+
+        undoer.addState(oldBoard);
+    }
 
     public static void main(String[] args) {
-        var board = new ChessBoard();
-        System.out.println(board.isMoveLegal(new Position(2, 0), new Position(4, 2), Color.WHITE));
+        var board = new ChessBoard("/home/kaappo/git/shakki/src/main/resources/boards/board1.dat");
+//        System.out.println(board.isMoveLegal(new Position(2, 0), new Position(4, 2), Color.WHITE));
+        System.out.println(board.getAllFittingMoves(Color.WHITE));
         System.out.println(board);
+        System.out.println(board.isMoveLegal(new Position(1, 0), new Position(0, 2), Color.WHITE));
     }
 }

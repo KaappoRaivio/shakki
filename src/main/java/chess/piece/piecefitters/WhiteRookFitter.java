@@ -9,8 +9,8 @@ import chess.piece.PieceType;
 
 public class WhiteRookFitter implements PieceFitter {
     @Override
-    public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard, Color turn) {
-        boolean rightTurn = currentBoard.getSquare(oldPosition).getPieceColor() == Color.WHITE && turn == Color.WHITE;
+    public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard) {
+        boolean rightTurn = currentBoard.getSquare(oldPosition).getPieceColor() == Color.WHITE;
         boolean correctFile =  oldPosition.getX() == newPosition.getX()
                                 || oldPosition.getY() == newPosition.getY();
 
@@ -19,21 +19,24 @@ public class WhiteRookFitter implements PieceFitter {
         }
 
         int offsetX = Integer.compare(newPosition.getX() - oldPosition.getX(), 0);
-        int offsetY = Integer.compare(newPosition.getX() - oldPosition.getX(), 0);
+        int offsetY = Integer.compare(newPosition.getY() - oldPosition.getY(), 0);
 
-        return isMoveLegalRecursive(oldPosition, newPosition, currentBoard, turn, false, offsetX, offsetY);
+        return isMoveLegalRecursive(oldPosition, newPosition, currentBoard, false, offsetX, offsetY);
     }
 
-    private boolean isMoveLegalRecursive (Position oldPosition, Position newPosition, ChessBoard currentBoard, Color turn, boolean recursive, int offsetX, int offsetY) {
+    private boolean isMoveLegalRecursive (Position oldPosition, Position newPosition, ChessBoard currentBoard, boolean recursive, int offsetX, int offsetY) {
         if (oldPosition.equals(newPosition) && recursive) {
             return true;
+        }
+        if (oldPosition.equals(newPosition)) {
+            return false;
         }
 
         if (currentBoard.getSquare(newPosition) != PieceType.NO_PIECE) {
             return false;
         }
 
-        return isMoveLegalRecursive(oldPosition, new Position(newPosition.getX() + offsetX, newPosition.getY() + offsetY), currentBoard, turn, true, offsetX, offsetY);
+        return isMoveLegalRecursive(oldPosition, new Position(newPosition.getX() + offsetX, newPosition.getY() + offsetY), currentBoard, true, offsetX, offsetY);
 
 
     }

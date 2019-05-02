@@ -33,10 +33,15 @@ public class Position implements Serializable {
 
     @Override
     public String toString() {
-        return "Position(" +
-                "x=" + x +
-                ", y=" + y +
-                ')';
+        return (char)(65 + x) + "" + (y + 1);
+    }
+
+    public Position offsetX (int x) {
+        return new Position(getX() + x, getY());
+    }
+
+    public Position offsetY (int y) {
+        return new Position(getX(), getY() + y);
     }
 
     public int getX() {

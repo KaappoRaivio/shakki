@@ -9,8 +9,8 @@ import chess.piece.PieceType;
 
 public class BlackPawnFitter implements PieceFitter {
     @Override
-    public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard, Color turn) {
-        if (currentBoard.getSquare(oldPosition).getPieceColor() != Color.BLACK || turn != Color.BLACK) {
+    public boolean isMoveLegal (Position oldPosition, Position newPosition, ChessBoard currentBoard) {
+        if (currentBoard.getSquare(oldPosition).getPieceColor() != Color.BLACK) {
             return false;
         }
 
