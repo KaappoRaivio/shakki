@@ -2,12 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3b50dae8-6431-48b7-87a4-cb4f664ada04" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackKingFitter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackQueenFitter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteKingFitter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteQueenFitter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/piece/PieceType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/piece/PieceType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/board/ChessBoard.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/Color.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/PieceFitter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/PieceType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/piecefitters/BlackKnightFitter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/piecefitters/BlackPawnFitter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/piecefitters/GeneralCriteria.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/piecefitters/WhiteBishopFitter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/piecefitters/WhiteKnightFitter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/piece/piecefitters/WhitePawnFitter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/board/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/chess/board/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/Color.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/PieceFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/PieceType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackBishopFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackKingFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackKnightFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackPawnFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackQueenFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackRookFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/GeneralCriteria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteBishopFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteKingFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteKnightFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhitePawnFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteQueenFitter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteRookFitter.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -19,7 +41,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="DarkyenusTimeTracker">
-    <option name="totalTimeSeconds" value="9453" />
+    <option name="totalTimeSeconds" value="9933" />
     <option name="gitIntegration" value="true" />
   </component>
   <component name="ExternalProjectsData">
@@ -46,11 +68,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackBishopFitter.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackRookFitter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+            <state relative-caret-position="127">
+              <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -58,22 +80,83 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/piece/PieceType.java">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/ChessBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-512">
-              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1323#1324#0" expanded="true" />
-                <element signature="e#1356#1357#0" expanded="true" />
-                <element signature="e#1395#1396#0" expanded="true" />
-                <element signature="e#1424#1425#0" expanded="true" />
-                <element signature="e#1664#1665#0" expanded="true" />
-                <element signature="e#1701#1702#0" expanded="true" />
-                <element signature="e#1954#1955#0" expanded="true" />
-                <element signature="e#1991#1992#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="80">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/GeneralCriteria.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteBishopFitter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteKingFitter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteKnightFitter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhitePawnFitter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteQueenFitter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteRookFitter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackQueenFitter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="64">
+              <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -92,10 +175,14 @@
     <findStrings>
       <find>WHITE</find>
       <find>White</find>
+      <find>chess.board.piece.piecefitters</find>
+      <find>chess.board.piece</find>
     </findStrings>
     <replaceStrings>
       <replace>BLACK</replace>
       <replace>Black</replace>
+      <replace>chess.piece.piecefitters</replace>
+      <replace>chess.piece</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -118,7 +205,6 @@
         <option value="$PROJECT_DIR$/src/main/java/misc/Position.java" />
         <option value="$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteBishopFitter.java" />
         <option value="$PROJECT_DIR$/src/main/resources/boards/default_board.dat" />
-        <option value="$PROJECT_DIR$/src/main/java/board/ChessBoard.java" />
         <option value="$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackBishopFitter.java" />
         <option value="$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteRookFitter.java" />
         <option value="$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackRookFitter.java" />
@@ -128,6 +214,23 @@
         <option value="$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackKingFitter.java" />
         <option value="$PROJECT_DIR$/src/main/java/piece/piecefitters/NoPieceFitter.java" />
         <option value="$PROJECT_DIR$/src/main/java/piece/PieceType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/board/ChessBoard.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/Color.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/PieceFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/PieceType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackKingFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackBishopFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackRookFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteQueenFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackKnightFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackPawnFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackQueenFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteBishopFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteKingFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteKnightFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhitePawnFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteRookFitter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/chess/board/ChessBoard.java" />
       </list>
     </option>
   </component>
@@ -172,6 +275,15 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="chess" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Chess" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shakki" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="chess" type="462c0819:PsiDirectoryNode" />
               <item name="board" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -180,14 +292,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="misc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Chess" type="b2602c69:ProjectViewProjectNode" />
-              <item name="shakki" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="chess" type="462c0819:PsiDirectoryNode" />
               <item name="piece" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -196,6 +301,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="chess" type="462c0819:PsiDirectoryNode" />
               <item name="piece" type="462c0819:PsiDirectoryNode" />
               <item name="piecefitters" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -224,7 +330,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556777470883" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1556777952709" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -244,11 +350,11 @@
   </component>
   <component name="RunManager" selected="Application.ChessBoard">
     <configuration name="ChessBoard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="board.ChessBoard" />
+      <option name="MAIN_CLASS_NAME" value="chess.board.ChessBoard" />
       <module name="Kaappo.Chess.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="board.*" />
+          <option name="PATTERN" value="chess.board.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -287,7 +393,7 @@
     <frame x="0" y="27" width="1920" height="1004" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2524013" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -295,8 +401,8 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" visible="true" weight="0.32949308" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32949308" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4994664" weight="0.32949308" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -305,7 +411,7 @@
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50053364" side_tool="true" weight="0.32949308" />
       <window_info anchor="bottom" id="Build" order="10" weight="0.32949308" />
-      <window_info anchor="bottom" id="Messages" order="11" />
+      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.32949308" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -386,7 +492,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/PieceFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/PieceFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="6" column="99" selection-start-line="6" selection-start-column="99" selection-end-line="6" selection-end-column="99" />
@@ -396,14 +502,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/Color.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/Color.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteKnightFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteKnightFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="7" selection-start-line="7" selection-end-line="20" selection-end-column="1" />
@@ -413,7 +519,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackKnightFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackKnightFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="256">
           <caret line="16" column="118" lean-forward="true" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="118" />
@@ -423,7 +529,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackPawnFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackPawnFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
@@ -460,7 +566,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/GeneralCriteria.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/GeneralCriteria.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
@@ -470,7 +576,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/WhitePawnFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhitePawnFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
           <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="14" selection-end-column="9" />
@@ -487,7 +593,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackKingFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackKingFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="9" column="5" selection-start-line="9" selection-start-column="5" selection-end-line="9" selection-end-column="5" />
@@ -497,7 +603,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteKingFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteKingFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="15" lean-forward="true" selection-start-line="7" selection-end-line="15" />
@@ -507,7 +613,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackQueenFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackQueenFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
@@ -517,7 +623,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteQueenFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteQueenFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
           <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="12" selection-end-column="5" />
@@ -527,7 +633,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteRookFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteRookFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="32">
           <caret line="9" column="13" lean-forward="true" selection-end-line="40" />
@@ -537,19 +643,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/board/ChessBoard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="80" column="8" selection-start-line="80" selection-start-column="8" selection-end-line="80" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#542#543#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackRookFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackRookFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="27" selection-start-column="27" selection-end-column="27" />
@@ -559,7 +653,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/WhiteBishopFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/WhiteBishopFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="479">
           <caret line="38" lean-forward="true" selection-start-line="9" selection-end-line="38" />
@@ -579,7 +673,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/PieceType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/PieceType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-512">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
@@ -597,13 +691,135 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/piece/piecefitters/BlackBishopFitter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/piece/piecefitters/BlackBishopFitter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/Color.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/PieceFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/PieceType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-337">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackBishopFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="9" column="35" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackKingFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackKnightFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="52" selection-start-line="8" selection-start-column="52" selection-end-line="8" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackPawnFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackQueenFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/BlackRookFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/GeneralCriteria.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteBishopFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteKingFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteKnightFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhitePawnFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="9" column="42" lean-forward="true" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteQueenFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/piece/piecefitters/WhiteRookFitter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="64">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/chess/board/ChessBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
