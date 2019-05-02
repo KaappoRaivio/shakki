@@ -1,8 +1,6 @@
 package piece;
 
-import piece.piecefitters.BlackPawnFitter;
-import piece.piecefitters.WhiteBishopFitter;
-import piece.piecefitters.WhitePawnFitter;
+import piece.piecefitters.*;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,10 +9,10 @@ import java.util.Optional;
 
 public enum PieceType {
     WHITE_PAWN ("p", Color.WHITE, new WhitePawnFitter()), WHITE_KNIGHT ("n", Color.WHITE), WHITE_BISHOP ("b", Color.WHITE, new WhiteBishopFitter()),
-    WHITE_ROOK ("r", Color.WHITE), WHITE_QUEEN ("q", Color.WHITE), WHITE_KING ("k", Color.WHITE),
+    WHITE_ROOK ("r", Color.WHITE, new WhiteRookFitter()), WHITE_QUEEN ("q", Color.WHITE), WHITE_KING ("k", Color.WHITE),
 
-    BLACK_PAWN ("P", Color.BLACK, new BlackPawnFitter()), BLACK_KNIGHT ("N", Color.BLACK), BLACK_BISHOP ("B", Color.BLACK),
-    BLACK_ROOK ("R", Color.BLACK), BLACK_QUEEN ("Q", Color.BLACK), BLACK_KING ("K", Color.BLACK),
+    BLACK_PAWN ("P", Color.BLACK, new BlackPawnFitter()), BLACK_KNIGHT ("N", Color.BLACK), BLACK_BISHOP ("B", Color.BLACK, new BlackBishopFitter()),
+    BLACK_ROOK ("R", Color.BLACK, new BlackRookFitter()), BLACK_QUEEN ("Q", Color.BLACK), BLACK_KING ("K", Color.BLACK),
 
     NO_PIECE (".", Color.NO_COLOR);
 
