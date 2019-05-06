@@ -34,7 +34,7 @@ public class BlackRookFitter implements PieceFitter {
                 return false;
             }
         } catch (ArrayIndexOutOfBoundsException e) {
-            return false;
+            return true;
         }
 
         return isMoveLegalRecursive(oldPosition, new Position(newPosition.getX() + offsetX, newPosition.getY() + offsetY), currentBoard, true, offsetX, offsetY);

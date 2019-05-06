@@ -31,9 +31,12 @@ public class WhiteRookFitter implements PieceFitter {
         if (oldPosition.equals(newPosition)) {
             return false;
         }
-
-        if (currentBoard.getSquare(newPosition) != PieceType.NO_PIECE) {
-            return false;
+        try {
+            if (currentBoard.getSquare(newPosition) != PieceType.NO_PIECE) {
+                return false;
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return true;
         }
 
         return isMoveLegalRecursive(oldPosition, new Position(newPosition.getX() + offsetX, newPosition.getY() + offsetY), currentBoard, true, offsetX, offsetY);

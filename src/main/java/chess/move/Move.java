@@ -10,7 +10,7 @@ public class Move {
     private ChessBoard board;
     private Color turn;
 
-    public Move (Position targetPosition, Position basePosition, ChessBoard board, Color turn) {
+    public Move (Position basePosition, Position targetPosition, ChessBoard board, Color turn) {
         this.targetPosition = targetPosition;
         this.basePosition = basePosition;
         this.board = board;
@@ -19,7 +19,7 @@ public class Move {
 
     @Override
     public String toString () {
-        return targetPosition + "" + basePosition;
+        return basePosition.toString() + targetPosition.toString();
     }
 
     public Position getTargetPosition () {
@@ -36,5 +36,11 @@ public class Move {
 
     public Color getTurn () {
         return turn;
+    }
+
+    public static Move valueOf (String string, ChessBoard board) {
+        var oldPos = Position.fromChessPosition(string.substring(0, 2));
+        System.out.println(oldPos + ", " + Position.fromChessPosition(string.substring(2)) + ", " + board.getSquare(oldPos));
+        return new Move(oldPos, Position.fromChessPosition(string.substring(2)), board, board.getSquare(oldPos).getPieceColor());
     }
 }

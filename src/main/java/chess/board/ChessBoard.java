@@ -11,6 +11,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class ChessBoard implements Serializable {
@@ -65,16 +66,13 @@ public class ChessBoard implements Serializable {
     }
 
     public boolean isMoveLegal (Position oldPosition, Position newPosition, Color turn) {
-        if (oldPosition.equals(new Position(3, 5)) && newPosition.equals(new Position(4, 4))) {
-            System.out.println("Debugger!");
-        }
-
-        if (getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this) && turn == getSquare(oldPosition).getPieceColor()) {
+        if (getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this)) { // && turn == getSquare(oldPosition).getPieceColor()) {
             makeDummyMove(oldPosition, newPosition);
             boolean check = kingChecker.isKingInCheck(turn);
             undo();
             return !check;
         } else {
+            System.out.println("no");
             return false;
         }
     }
@@ -167,12 +165,25 @@ public class ChessBoard implements Serializable {
     public static void main(String[] args) {
         var board = new ChessBoard("/home/kaappo/git/shakki/src/main/resources/boards/board1.dat");
 //        System.out.println(board.isMoveLegal(new Position(2, 0), new Position(4, 2), Color.WHITE));
-        System.out.println(board.getAllFittingMoves(Color.BLACK));
-        System.out.println(board);
+//        System.out.println(board.getAllFittingMoves(Color.BLACK));
+//        System.out.println(board);
+
         if (board.kingChecker.isKingInCheck(Color.BLACK)) {
             System.out.println("King is in check!");
         } else {
-            System.out.println("king is not int check!");
+            System.out.println("king is not in check!");
+        }
+
+        while (true) {
+            String in = new Scanner(System.in).nextLine();
+            try {
+                board.makeMove(Move.valueOf(in, board));
+                System.out.println(board);
+                System.out.println(board.getAllFittingMoves(Color.WHITE));
+                System.out.println(board.getAllFittingMoves(Color.BLACK));
+            } catch (RuntimeException e) {
+                e.printStackTrace();
+            }
         }
 //        System.out.println(board.isMoveLegal(new Position(3, 5), new Position(3, 4), Color.BLACK));
     }

@@ -51,4 +51,8 @@ public class Position implements Serializable {
     public int getY() {
         return y;
     }
+
+    public static Position fromChessPosition (String string) {
+        return new Position(((int) string.charAt(0)) - 65, Integer.parseInt(String.valueOf(string.charAt(1))) - 1);
+    }
 }
