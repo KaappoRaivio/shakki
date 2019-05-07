@@ -40,7 +40,6 @@ public class Move {
 
     public static Move valueOf (String string, ChessBoard board) {
         var oldPos = Position.fromChessPosition(string.substring(0, 2));
-        System.out.println(oldPos + ", " + Position.fromChessPosition(string.substring(2)) + ", " + board.getSquare(oldPos));
         return new Move(oldPos, Position.fromChessPosition(string.substring(2)), board, board.getSquare(oldPos).getPieceColor());
     }
 }

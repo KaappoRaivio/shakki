@@ -1,5 +1,7 @@
 package chess.board;
 
+import chess.exceptions.CheckmateException;
+import chess.exceptions.ChessException;
 import chess.move.Move;
 import misc.Position;
 import chess.piece.Color;
@@ -17,7 +19,6 @@ import java.util.Scanner;
 public class ChessBoard implements Serializable {
     private Saver<ChessBoard> saver = new Saver<>();
     private Undoer<PieceType[][]> undoer = new Undoer<>();
-    private KingChecker kingChecker = new KingChecker(this);
 
     private boolean hasWhiteKingMoved = false;
     private boolean hasBlackKingMoved = false;
@@ -53,7 +54,7 @@ public class ChessBoard implements Serializable {
         var lines = rawText.split("\n");
 
         if (lines.length != 8) {
-            throw new RuntimeException("Invalid board format!");
+            throw new ChessException("Invalid board format!");
         }
 
         for (int y = 0; y < board.length; y++) {
@@ -65,14 +66,22 @@ public class ChessBoard implements Serializable {
         }
     }
 
+    public boolean isCheckMate (Color color) {
+        return kingChecker.isKingInCheck(color) && getAllFittingMoves(color, true).size() == 0;
+    }
+
     public boolean isMoveLegal (Position oldPosition, Position newPosition, Color turn) {
-        if (getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this)) { // && turn == getSquare(oldPosition).getPieceColor()) {
+        if (getSquare(oldPosition).getFitter().isMoveLegal(oldPosition, newPosition, this) && turn == getSquare(oldPosition).getPieceColor()) {
             makeDummyMove(oldPosition, newPosition);
-            boolean check = kingChecker.isKingInCheck(turn);
-            undo();
-            return !check;
+            try {
+                boolean check = kingChecker.isKingInCheck(turn);
+                undo();
+                return !check;
+            } catch (ChessException e) {
+                undo();
+                return false;
+            }
         } else {
-            System.out.println("no");
             return false;
         }
     }
@@ -98,7 +107,17 @@ public class ChessBoard implements Serializable {
         return builder.toString();
     }
 
-    public List<Move> getAllFittingMoves (Color color) {
+    private List<Move> getAllFittingMoves (Color color) {
+        return getAllFittingMoves(color, false);
+    }
+
+    private List<Move> getAllFittingMoves (Color color, boolean noException) {
+        if (!noException) {
+            if (isCheckMate(color)) {
+                throw new CheckmateException("Color " + color + " is in checkmate!");
+            }
+        }
+
         var moves = new LinkedList<Move>();
 
         for (int y = 0; y < board.length; y++) {
@@ -164,27 +183,22 @@ public class ChessBoard implements Serializable {
 
     public static void main(String[] args) {
         var board = new ChessBoard("/home/kaappo/git/shakki/src/main/resources/boards/board1.dat");
-//        System.out.println(board.isMoveLegal(new Position(2, 0), new Position(4, 2), Color.WHITE));
-//        System.out.println(board.getAllFittingMoves(Color.BLACK));
-//        System.out.println(board);
+//
 
-        if (board.kingChecker.isKingInCheck(Color.BLACK)) {
-            System.out.println("King is in check!");
-        } else {
-            System.out.println("king is not in check!");
-        }
+        var a = board.getAllFittingMoves(Color.WHITE, true);
+        System.out.println(a);
+//        System.out.println(board.isMoveLegal(Move.valueOf("D8D7", board)));
 
-        while (true) {
-            String in = new Scanner(System.in).nextLine();
-            try {
-                board.makeMove(Move.valueOf(in, board));
-                System.out.println(board);
-                System.out.println(board.getAllFittingMoves(Color.WHITE));
-                System.out.println(board.getAllFittingMoves(Color.BLACK));
-            } catch (RuntimeException e) {
-                e.printStackTrace();
-            }
-        }
+//        a.forEach(item -> {
+//            board.makeMove(item);
+//            System.out.println(board);
+//            board.undo();
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        });
 //        System.out.println(board.isMoveLegal(new Position(3, 5), new Position(3, 4), Color.BLACK));
     }
 }
