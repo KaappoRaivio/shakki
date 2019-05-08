@@ -55,4 +55,8 @@ public class Position implements Serializable {
     public static Position fromChessPosition (String string) {
         return new Position(((int) string.charAt(0)) - 65, Integer.parseInt(String.valueOf(string.charAt(1))) - 1);
     }
+
+    public Position subtract (Position positionOnBoard) {
+        return new Position(getX() - positionOnBoard.getX(), getY() - positionOnBoard.getY());
+    }
 }

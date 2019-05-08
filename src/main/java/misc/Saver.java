@@ -2,10 +2,11 @@ package misc;
 
 import java.io.*;
 
-public class Saver<T extends Serializable> implements Serializable {
-    public String save (T object, String path, boolean relative) {
+public class Saver implements Serializable {
+    private Saver () {};
+
+    public static <T extends Serializable> String save (T object, String path, boolean relative) {
         if (relative) {
-//            path = System.getProperty("user.dir") + "/src/main/resources/boards/" + name + ".ser";
             path = System.getProperty("user.dir") + path;
         }
 
@@ -14,7 +15,6 @@ public class Saver<T extends Serializable> implements Serializable {
         try {
             if (file.createNewFile()) {
                 System.out.println("Creating new file " + path);
-
             } else {
                 System.out.println("File " + path + " already exists");
             }
@@ -40,7 +40,7 @@ public class Saver<T extends Serializable> implements Serializable {
         return path;
     }
 
-    public T fromFile (String path, boolean relative) {
+    public static <T extends Serializable> T fromFile (String path, boolean relative) {
         String absolutePath;
 
         if (relative) {
@@ -74,7 +74,7 @@ public class Saver<T extends Serializable> implements Serializable {
         return recovered;
     }
 
-    public T deepCopy (T object) {
+    public static <T extends Serializable> T deepCopy (T object) {
         T newObject;
 
         try {
@@ -86,6 +86,7 @@ public class Saver<T extends Serializable> implements Serializable {
             InputStream inputStream = new ByteArrayInputStream(outputStream.toByteArray());
             ObjectInputStream objectInputStream = new ObjectInputStream(inputStream);
             try {
+                //noinspection unchecked
                 newObject = (T) objectInputStream.readObject();
             } catch (ClassNotFoundException | ClassCastException e) {
                 throw new RuntimeException("Exception in deepcopying " + object);

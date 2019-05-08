@@ -39,7 +39,8 @@ public class Move {
     }
 
     public static Move valueOf (String string, ChessBoard board) {
+        string = string.toUpperCase();
         var oldPos = Position.fromChessPosition(string.substring(0, 2));
-        return new Move(oldPos, Position.fromChessPosition(string.substring(2)), board, board.getSquare(oldPos).getPieceColor());
+        return new Move(oldPos, Position.fromChessPosition(string.substring(2)), board, board.getSquare(oldPos).getColor());
     }
 }
