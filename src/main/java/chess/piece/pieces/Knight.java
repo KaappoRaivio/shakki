@@ -8,7 +8,10 @@ import chess.piece.PieceType;
 import misc.Pair;
 import misc.Position;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Knight extends Piece {
     public Knight (Color pieceColor) {
@@ -17,7 +20,22 @@ public class Knight extends Piece {
 
     @Override
     public List<Move> getAllMoves (ChessBoard board, Position currentPosition) {
-        return null;
+        var moveList = Arrays.asList(
+                new Move(currentPosition, currentPosition.offsetX(2).offsetY(1), board),
+                new Move(currentPosition, currentPosition.offsetX(2).offsetY(-1), board),
+                new Move(currentPosition, currentPosition.offsetX(-2).offsetY(-1), board),
+                new Move(currentPosition, currentPosition.offsetX(-2).offsetY(1), board),
+
+                new Move(currentPosition, currentPosition.offsetX(1).offsetY(2), board),
+                new Move(currentPosition, currentPosition.offsetX(1).offsetY(-2), board),
+                new Move(currentPosition, currentPosition.offsetX(-1).offsetY(-2), board),
+                new Move(currentPosition, currentPosition.offsetX(-1).offsetY(2), board)
+        );
+
+        return moveList
+                .stream()
+                .filter(move -> board.getSquare(move.getBasePosition()).canReach(board, move.getBasePosition(), move.getTargetPosition()))
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override

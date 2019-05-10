@@ -10,17 +10,25 @@ import misc.Position;
 import java.util.List;
 
 public class Queen extends Piece {
+    private Rook rook;
+    private Bishop bishop;
+
     public Queen (Color pieceColor) {
         super(PieceType.QUEEN, pieceColor);
+        rook = new Rook(color);
+        bishop = new Bishop(color);
     }
 
     @Override
     public List<Move> getAllMoves (ChessBoard board, Position currentPosition) {
-        return null;
+        var list = rook.getAllMoves(board, currentPosition);
+        list.addAll(bishop.getAllMoves(board, currentPosition));
+
+        return list;
     }
 
     @Override
     public boolean canReach (ChessBoard board, Position currentPosition, Position targetPosition) {
-        return new Rook(color).canReach(board, currentPosition, targetPosition) || new Bishop(color).canReach(board, currentPosition, targetPosition);
+        return rook.canReach(board, currentPosition, targetPosition) || bishop.canReach(board, currentPosition, targetPosition);
     }
 }

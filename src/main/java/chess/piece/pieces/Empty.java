@@ -9,6 +9,7 @@ import misc.Position;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Empty extends Piece {
@@ -18,7 +19,7 @@ public class Empty extends Piece {
 
     @Override
     public List<Move> getAllMoves (ChessBoard board, Position currentPosition) {
-        return null;
+        return new LinkedList<>();
     }
 
     @Override

@@ -9,6 +9,6 @@ public class Main {
         var move = Move.valueOf("c2d3", board);
         System.out.println(move);
         System.out.println(board.isMoveLegal(move));
-        System.out.println(board.getSquare(Position.fromChessPosition("e2")).getAllMoves(board, Position.fromChessPosition("e2")));
+        System.out.println(board.getSquare(Position.fromChessPosition("e5")).getAllMoves(board, Position.fromChessPosition("e5")));
     }
 }

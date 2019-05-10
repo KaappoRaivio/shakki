@@ -8,7 +8,9 @@ import chess.piece.PieceType;
 import misc.Pair;
 import misc.Position;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Rook extends Piece {
     public Rook (Color pieceColor) {
@@ -17,7 +19,38 @@ public class Rook extends Piece {
 
     @Override
     public List<Move> getAllMoves (ChessBoard board, Position currentPosition) {
-        return null;
+        List<Move> moves = new LinkedList<>();
+
+
+        var newPosition = currentPosition;
+        while (newPosition.getX() < 8) {
+            moves.add(new Move(currentPosition, newPosition, board));
+            newPosition = newPosition.offsetX(1).offsetY(0);
+        }
+
+        newPosition = currentPosition;
+        while (newPosition.getX() >= 0) {
+            moves.add(new Move(currentPosition, newPosition, board));
+            newPosition = newPosition.offsetX(-1).offsetY(0);
+        }
+
+        newPosition = currentPosition;
+        while (newPosition.getY() >= 0) {
+            moves.add(new Move(currentPosition, newPosition, board));
+            newPosition = newPosition.offsetX(0).offsetY(-1);
+        }
+
+        newPosition = currentPosition;
+        while (newPosition.getY() < 8) {
+            moves.add(new Move(currentPosition, newPosition, board));
+            newPosition = newPosition.offsetX(0).offsetY(1);
+
+        }
+
+        return moves
+                .stream()
+                .filter(move -> board.getSquare(move.getBasePosition()).canReach(board, move.getBasePosition(), move.getTargetPosition()))
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override
