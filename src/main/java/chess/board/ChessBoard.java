@@ -187,6 +187,7 @@ public class ChessBoard implements Serializable {
     }
 
     public Pair<Position, Piece> findNextPiece (Position start, int offsetX, int offsetY, Position end) {
+        start = start.offsetX(offsetX).offsetY(offsetY);
         Piece square = getSquare(start);
 
         if (start.equals(end)) {
@@ -195,7 +196,7 @@ public class ChessBoard implements Serializable {
 
         if (square.getColor() == Color.NO_COLOR) {
             try {
-                return findNextPiece(start.offsetX(offsetX).offsetY(offsetY), offsetX, offsetY, end);
+                return findNextPiece(start, offsetX, offsetY, end);
             } catch (ArrayIndexOutOfBoundsException e) {
                 return new Pair<>(start, square);
             }

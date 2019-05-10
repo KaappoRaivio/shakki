@@ -21,6 +21,6 @@ public class Queen extends Piece {
 
     @Override
     public boolean canReach (ChessBoard board, Position currentPosition, Position targetPosition) {
-        return false;
+        return new Rook(color).canReach(board, currentPosition, targetPosition) || new Bishop(color).canReach(board, currentPosition, targetPosition);
     }
 }

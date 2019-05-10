@@ -33,7 +33,7 @@ public class Position implements Serializable {
 
     @Override
     public String toString() {
-        return (char)(65 + x) + "" + (y + 1);
+        return (char)(97 + x) + "" + (y + 1);
     }
 
     public Position offsetX (int x) {
@@ -53,6 +53,7 @@ public class Position implements Serializable {
     }
 
     public static Position fromChessPosition (String string) {
+        string = string.toUpperCase();
         return new Position(((int) string.charAt(0)) - 65, Integer.parseInt(String.valueOf(string.charAt(1))) - 1);
     }
 

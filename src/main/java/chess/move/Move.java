@@ -10,6 +10,10 @@ public class Move {
     private ChessBoard board;
     private Color turn;
 
+    public Move (Position basePosition, Position targetPosition, ChessBoard board) {
+        this(basePosition, targetPosition, board, board.getSquare(basePosition).getColor());
+    }
+
     public Move (Position basePosition, Position targetPosition, ChessBoard board, Color turn) {
         this.targetPosition = targetPosition;
         this.basePosition = basePosition;

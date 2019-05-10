@@ -5,6 +5,7 @@ import chess.move.Move;
 import chess.piece.Color;
 import chess.piece.Piece;
 import chess.piece.PieceType;
+import misc.Pair;
 import misc.Position;
 
 import java.util.List;
@@ -24,9 +25,12 @@ public class Rook extends Piece {
         int offsetX = Integer.compare(targetPosition.getX(), currentPosition.getX());
         int offsetY = Integer.compare(targetPosition.getY(), currentPosition.getY());
 
-        boolean correctFile = Boolean.logicalXor(offsetX == 1, offsetY == 1);
+        boolean correctFile = Boolean.logicalXor(Math.abs(offsetX) == 1, Math.abs(offsetY) == 1);
+        if (!correctFile) {
+            return false;
+        }
 
-        var nextPiece = board.findNextPiece(currentPosition, offsetX, offsetY, targetPosition);
+        Pair<Position, Piece> nextPiece = board.findNextPiece(currentPosition, offsetX, offsetY, targetPosition);
         return nextPiece.getV().getColor() != color && nextPiece.getK().equals(targetPosition);
     }
 }
