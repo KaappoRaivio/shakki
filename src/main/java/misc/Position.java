@@ -13,6 +13,10 @@ public class Position implements Serializable {
         this.y = y;
     }
 
+    public boolean equals (int x, int y) {
+        return getX() == x && getY() == y;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

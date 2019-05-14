@@ -4,6 +4,7 @@ import chess.exceptions.CheckmateException;
 import chess.exceptions.ChessException;
 import chess.move.Move;
 import chess.piece.Piece;
+import chess.piece.PieceType;
 import chess.piece.pieces.Empty;
 import misc.Pair;
 import misc.Position;
@@ -15,12 +16,16 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 
 public class ChessBoard implements Serializable {
 
     private boolean hasWhiteKingMoved = false;
     private boolean hasBlackKingMoved = false;
+
+    private Position whiteKingPos;
+    private Position blackKingPos;
 
     private Piece[][] board;
 
@@ -39,7 +44,7 @@ public class ChessBoard implements Serializable {
     }
 
     public Piece getSquare (Position position) {
-        return board[position.getY()][position.getX()];
+        return Optional.of(board[position.getY()][position.getX()]).orElseThrow();
     }
 
     private void resetBoard (String path) {
@@ -84,7 +89,33 @@ public class ChessBoard implements Serializable {
         }
     }
 
-    private boolean isKingInCheck (Color color) {
+    private Position getKingPos (Color color) {
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                var position = new Position(x, y);
+                if (getSquare(position).getColor() == color && getSquare(position).getPieceType() == PieceType.KING) {
+                    return position;
+                }
+            }
+        }
+
+        throw new ChessException(color + " king was not found on board " + toString());
+    }
+
+    public boolean isKingInCheck (Color color) {
+        Position kingPos = getKingPos(color);
+
+        for (int y = 0; y < board.length; y++) {
+            for (int x = 0; x < board[y].length; x++) {
+                var currentPos = new Position(x, y);
+                var square = getSquare(currentPos);
+
+                if (square.canReach(this, currentPos, kingPos) && square.getColor() == color.invert()) {
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 
@@ -109,44 +140,28 @@ public class ChessBoard implements Serializable {
         return builder.toString();
     }
 
-    private List<Move> getAllFittingMoves (Color color) {
-        return getAllFittingMoves(color, false);
-    }
-
-    private List<Move> getAllFittingMoves (Color color, boolean noException) {
-        if (!noException) {
-            if (isCheckMate(color)) {
-                throw new CheckmateException("Color " + color + " is in checkmate!");
-            }
-        }
-
-        var moves = new LinkedList<Move>();
+    public List<Move> getAllFittingMoves (Color color) {
+        List<Move> moveList = new LinkedList<>();
 
         for (int y = 0; y < board.length; y++) {
             for (int x = 0; x < board[y].length; x++) {
-                moves.addAll(getAllFittingMoves(new Position(x, y), color));
+                var pos = new Position(x, y);
+                moveList.addAll(getSquare(pos).getAllMoves(this, pos));
             }
         }
 
-        return moves;
+        return moveList;
     }
 
-    private boolean isCheckMate (Color color) {
-        return false;
-    }
-
-    private List<Move> getAllFittingMoves (Position oldPosition, Color color) {
-        var moves = new LinkedList<Move>();
-
-        for (int y = 0; y < board.length; y++) {
-            for (int x = 0; x < board[y].length; x++) {
-                if (isMoveLegal(oldPosition, new Position(x, y), color)) {
-                    moves.add(new Move(oldPosition, new Position(x, y), deepCopy(), color));
-                }
-            }
+    public boolean hasKingMoved (Color color) {
+        switch (color) {
+            case WHITE:
+                return hasWhiteKingMoved;
+            case BLACK:
+                return hasBlackKingMoved;
+            default:
+                throw new ChessException("Color must be something!");
         }
-
-        return moves;
     }
 
     public void makeMove (Move move) {
@@ -164,8 +179,21 @@ public class ChessBoard implements Serializable {
 
     private void makeDummyMove (Position oldPosition, Position newPosition) {
         saveState();
+        var square = getSquare(oldPosition);
+        if (square.getPieceType() == PieceType.KING) {
+            switch (square.getColor()) {
+                case WHITE:
+                    whiteKingPos = newPosition;
+                    break;
+                case BLACK:
+                    blackKingPos = newPosition;
+                    break;
+                case NO_COLOR:
+                    throw new RuntimeException("King must be some color!");
+            }
+        }
         setSquare(oldPosition, new Empty());
-        setSquare(newPosition, getSquare(oldPosition));
+        setSquare(newPosition, square);
     }
 
     public ChessBoard deepCopy () {
@@ -203,26 +231,5 @@ public class ChessBoard implements Serializable {
         } else {
             return new Pair<>(start, square);
         }
-    }
-
-    public static void main(String[] args) {
-        var board = new ChessBoard("/home/kaappo/git/shakki/src/main/resources/boards/board1.dat");
-//
-
-        var a = board.getAllFittingMoves(Color.WHITE, true);
-        System.out.println(a);
-//        System.out.println(board.isMoveLegal(Move.valueOf("D8D7", board)));
-
-//        a.forEach(item -> {
-//            board.makeMove(item);
-//            System.out.println(board);
-//            board.undo();
-//            try {
-//                Thread.sleep(500);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        });
-//        System.out.println(board.isMoveLegal(new Position(3, 5), new Position(3, 4), Color.BLACK));
     }
 }

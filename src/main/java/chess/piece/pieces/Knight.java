@@ -47,8 +47,13 @@ public class Knight extends Piece {
         if (!correctPath) {
             return false;
         }
+        Piece nextPiece;
 
-        Piece nextPiece = board.getSquare(targetPosition);
+        try {
+            nextPiece = board.getSquare(targetPosition);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return false;
+        }
         return nextPiece.getColor() != color;
     }
 }

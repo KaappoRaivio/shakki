@@ -1,29 +1,24 @@
 package chess.board;
 
+import chess.move.Move;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
-public class Undoer<T> implements Serializable {
-    private Stack<T> states = new Stack<>();
+public class Undoer implements Serializable {
+    private ChessBoard currentBoard;
+    private Stack<Move> moves = new Stack<>();
 
-    public void addState (T state) {
-        states.add(state);
+    public Undoer (ChessBoard originalBoard) {
+        this.currentBoard = originalBoard.deepCopy();
     }
 
-    public T undo () {
-        return states.pop();
-    }
+    public void makeMove (Move move) {
+        moves.push(move);
 
-    public T undo (int level) {
-        if (level < 2) {
-            return undo();
-        }
-        else {
-            states.pop();
-            return undo(level - 1);
-        }
+        currentBoard.makeMove(move);
     }
 }

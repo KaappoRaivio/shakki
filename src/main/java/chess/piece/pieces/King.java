@@ -1,6 +1,7 @@
 package chess.piece.pieces;
 
 import chess.board.ChessBoard;
+import chess.move.CastlingType;
 import chess.move.Move;
 import chess.piece.Color;
 import chess.piece.Piece;
@@ -12,6 +13,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static chess.piece.PieceType.KING;
 
 public class King extends Piece {
     public King (Color pieceColor) {
@@ -50,5 +53,38 @@ public class King extends Piece {
             return false;
         }
         return square.getColor() != color;
+    }
+
+    private boolean isCastling (ChessBoard board, Position currentPosition, Position targetPosition) {
+        if (board.hasKingMoved(color)) {
+            return false;
+        }
+
+        var square = board.getSquare(currentPosition);
+
+        switch (square.getColor()) {
+            case WHITE:
+                if (square.getPieceType() == KING && currentPosition.equals(4, 0)) {
+                    if (targetPosition.equals(6, 0)) {
+                        castlingType = CastlingType.SHORT;
+                    } else if (targetPosition.equals(2, 0)) {
+                        castlingType = CastlingType.LONG;
+                    }
+                }
+
+                break;
+            case BLACK:
+                if (square.getPieceType() == KING && currentPosition.equals(4, 7)) {
+                    if (targetPosition.equals(6, 7)) {
+                        castlingType = CastlingType.SHORT;
+                    } else if (targetPosition.equals(2, 7)) {
+                        castlingType = CastlingType.LONG;
+                    }
+                }
+
+                break;
+            default:
+                castlingType = CastlingType.NO_CASTLING;
+        }
     }
 }
